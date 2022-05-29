@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-//Á¸³ª º¹ÀâÇÏ³× ¤µ¤² 
 
 typedef struct d_node{
 	char data[100];
@@ -25,20 +24,20 @@ void print_node(D_node *head)
 	printf("\n");
 }
 
-void d_insert(D_node *before, char data[])	//beforeÀÇ ¿À¸¥ÂÊ¿¡ ³ëµå¸¦ Ãß°¡ÇÏ´ÂÇÔ¼ö
+void d_insert(D_node *before, char data[])	//beforeì˜ ì˜¤ë¥¸ìª½ì— ë…¸ë“œë¥¼ ì¶”ê°€í•˜ëŠ”í•¨ìˆ˜
 {
 	D_node *new_node = (D_node *)malloc(sizeof(D_node));
 	strcpy(new_node->data, data);
 	
-	if(strcmp(before->data, "\0") == 0)	//head°¡ ÀÔ·ÂµÇ¾úÀ»¶§ 
+	if(strcmp(before->data, "\0") == 0)	//headê°€ ìž…ë ¥ë˜ì—ˆì„ë•Œ 
 	{
 		new_node->hlink = NULL;
 		new_node->tlink = before->tlink;
 		
-		if(before->tlink != NULL)	//head¿Í ¿¬°áµÈ ³ëµå°¡ ÀÖ¾ú´Ù¸é 
-			before->tlink->hlink = new_node;	//¿ø·¡headµÚ¿¡ ÀÖ´ø³ëµå¿Í »õ·Î¿î³ëµå ¿¬°á
+		if(before->tlink != NULL)	//headì™€ ì—°ê²°ëœ ë…¸ë“œê°€ ìžˆì—ˆë‹¤ë©´ 
+			before->tlink->hlink = new_node;	//ì›ëž˜headë’¤ì— ìžˆë˜ë…¸ë“œì™€ ìƒˆë¡œìš´ë…¸ë“œ ì—°ê²°
 			
-		before->tlink = new_node;	//head¸¦ »õ·Î¿î ³ëµå¿Í ¿¬°á 
+		before->tlink = new_node;	//headë¥¼ ìƒˆë¡œìš´ ë…¸ë“œì™€ ì—°ê²° 
 	}
 	else
 	{
@@ -51,11 +50,11 @@ void d_insert(D_node *before, char data[])	//beforeÀÇ ¿À¸¥ÂÊ¿¡ ³ëµå¸¦ Ãß°¡ÇÏ´ÂÇÔ
 
 void d_delete(D_node *head, D_node *remove)
 {
-	if(remove->hlink == NULL)	//»èÁ¦ÇÒ³ëµå°¡ Ã¹¹øÂ°³ëµåÀÏ‹š
+	if(remove->hlink == NULL)	//ì‚­ì œí• ë…¸ë“œê°€ ì²«ë²ˆì§¸ë…¸ë“œì¼Â‹Âš
 	{
-		if(remove->tlink == NULL)	//Ã¹¹øÂ°³ëµåÀÌÀÚ ¸¶Áö¸·³ëµåÀÏ¶§
+		if(remove->tlink == NULL)	//ì²«ë²ˆì§¸ë…¸ë“œì´ìž ë§ˆì§€ë§‰ë…¸ë“œì¼ë•Œ
 		{
-			printf("¸¶Áö¸· ³ëµå¸¦ »èÁ¦Çß½À´Ï´Ù. \n");
+			printf("ë§ˆì§€ë§‰ ë…¸ë“œë¥¼ ì‚­ì œí–ˆìŠµë‹ˆë‹¤. \n");
 			head->tlink = NULL;
 			free(remove); 
 		}
@@ -88,13 +87,13 @@ int main(void)
 	
 	current = head->tlink;
 	p = head->tlink;
-	while(p->tlink != NULL)	//p°¡ ¸¶Áö¸·°ªÀ»°¡¸£Å³¶§±îÁö ¹Ýº¹ 
+	while(p->tlink != NULL)	//pê°€ ë§ˆì§€ë§‰ê°’ì„ê°€ë¥´í‚¬ë•Œê¹Œì§€ ë°˜ë³µ 
 		p = p->tlink; 
 
 	print_node(head);
 	do
 	{
-		printf("\n\n¸í·É¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä (<,>,q) : ");
+		printf("\n\nëª…ë ¹ì–´ë¥¼ ìž…ë ¥í•˜ì„¸ìš” (<,>,q) : ");
 		ch = getchar();
 		getchar();
 		printf("\n");
